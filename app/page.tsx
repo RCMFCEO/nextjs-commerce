@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
  
 const DROPS = [
   { name: "Surprise Era Drop",     open: new Date("2026-05-26T00:00:00"), close: new Date("2026-06-01T23:59:59") },
@@ -27,6 +26,14 @@ function getActiveDrop() {
     if (now < drop.open) return { drop, status: "upcoming" as const }
   }
   return { drop: DROPS[DROPS.length - 1], status: "closed" as const }
+}
+ 
+function ArrowRight() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  )
 }
  
 function CountdownDisplay() {
@@ -153,7 +160,7 @@ export default function HomePage() {
               <p className="text-[9px] tracking-[0.35em] uppercase text-[#d4a5a5]/60 mb-2">Four Lanes</p>
               <h2 className="italic text-3xl md:text-4xl text-[#d4a5a5]">Something for every collector</h2>
             </div>
-            <Link href="/search" className="text-[10px] tracking-[0.15em] uppercase text-[#c4b8a8]/50 hover:text-[#d4a5a5] transition-colors inline-flex items-center gap-2">View all <ArrowRight className="w-3 h-3" /></Link>
+            <Link href="/search" className="text-[10px] tracking-[0.15em] uppercase text-[#c4b8a8]/50 hover:text-[#d4a5a5] transition-colors inline-flex items-center gap-2">View all <ArrowRight /></Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#d4a5a5]/12">
             {LANES.map((lane) => (
@@ -166,7 +173,7 @@ export default function HomePage() {
                 <p className="text-[11px] tracking-wide text-[#d4a5a5] mb-4">{lane.price}</p>
                 <p className="text-xs text-[#c4b8a8] leading-relaxed mb-4 flex-1">{lane.desc}</p>
                 <p className="text-[9px] text-[#c4b8a8]/45 leading-relaxed mb-6 tracking-wide">{lane.rules}</p>
-                <Link href={lane.href} className="inline-flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-[#d4a5a5] hover:text-[#f5f0e8] transition-colors">{lane.cta} <ArrowRight className="w-3 h-3" /></Link>
+                <Link href={lane.href} className="inline-flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-[#d4a5a5] hover:text-[#f5f0e8] transition-colors">{lane.cta} <ArrowRight /></Link>
               </div>
             ))}
           </div>
@@ -178,7 +185,7 @@ export default function HomePage() {
           <p className="text-[9px] tracking-[0.4em] uppercase text-[#d4a5a5]/50 mb-8">The Founder</p>
           <blockquote className="italic text-2xl md:text-3xl font-light text-[#f5f0e8] leading-[1.7] mb-8">&ldquo;Recycle Me Fancy was not a pivot. It was a homecoming. The archive had been building for twenty years inside the woman who wore Juicy Couture coats with ruffled backs and refused to apologize for the hot pink underneath.&rdquo;</blockquote>
           <p className="text-[10px] tracking-[0.25em] uppercase text-[#d4a5a5]/50 mb-8">Angela Bailey-Briggs · Founder, RCMF</p>
-          <Link href="/our-story" className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[#d4a5a5] border border-[#d4a5a5]/30 px-6 py-3 hover:border-[#d4a5a5] transition-colors">Read Our Story <ArrowRight className="w-3 h-3" /></Link>
+          <Link href="/our-story" className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[#d4a5a5] border border-[#d4a5a5]/30 px-6 py-3 hover:border-[#d4a5a5] transition-colors">Read Our Story <ArrowRight /></Link>
         </div>
       </section>
  
@@ -197,4 +204,3 @@ export default function HomePage() {
     </main>
   )
 }
- 
