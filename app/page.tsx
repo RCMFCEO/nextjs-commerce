@@ -30,7 +30,7 @@ function getActiveDrop(): DropInfo {
   for (const drop of DROPS) {
     if (now < drop.open) return { drop, status: "upcoming" }
   }
-  return { drop: DROPS[DROPS.length - 1], status: "closed" }
+return { drop: DROPS[9]!, status: "closed" }
 }
  
 function ArrowRight() {
