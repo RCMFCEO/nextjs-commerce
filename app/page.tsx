@@ -15,17 +15,22 @@ const DROPS = [
   { name: "Holiday Drop",          open: new Date("2026-12-29T00:00:00"), close: new Date("2027-01-03T23:59:59") },
   { name: "Surprise Era Drop",     open: new Date("2027-01-26T00:00:00"), close: new Date("2027-01-31T23:59:59") },
   { name: "Pink Fancy Boulevard",  open: new Date("2027-02-23T00:00:00"), close: new Date("2027-02-28T23:59:59") },
-]
+] as const
  
-function getActiveDrop() {
+type Drop = typeof DROPS[number]
+type DropInfo =
+  | { drop: Drop; status: "open" | "upcoming" }
+  | { drop: Drop; status: "closed" }
+ 
+function getActiveDrop(): DropInfo {
   const now = new Date()
   for (const drop of DROPS) {
-    if (now >= drop.open && now <= drop.close) return { drop, status: "open" as const }
+    if (now >= drop.open && now <= drop.close) return { drop, status: "open" }
   }
   for (const drop of DROPS) {
-    if (now < drop.open) return { drop, status: "upcoming" as const }
+    if (now < drop.open) return { drop, status: "upcoming" }
   }
-  return { drop: DROPS[DROPS.length - 1], status: "closed" as const }
+  return { drop: DROPS[DROPS.length - 1], status: "closed" }
 }
  
 function ArrowRight() {
@@ -38,7 +43,7 @@ function ArrowRight() {
  
 function CountdownDisplay() {
   const [time, setTime] = useState({ d: "00", h: "00", m: "00", s: "00" })
-  const [info, setInfo] = useState(getActiveDrop())
+  const [info, setInfo] = useState<DropInfo>(getActiveDrop())
  
   useEffect(() => {
     const tick = () => {
