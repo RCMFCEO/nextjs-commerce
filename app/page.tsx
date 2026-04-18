@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
- 
+<script async src="https://imgbb.com/upload.js"></script>
 const DROPS = [
   { name: "Surprise Era Drop",     open: new Date("2026-05-26T00:00:00"), close: new Date("2026-06-01T23:59:59") },
   { name: "June Butter Edit",      open: new Date("2026-06-30T00:00:00"), close: new Date("2026-07-05T23:59:59") },
