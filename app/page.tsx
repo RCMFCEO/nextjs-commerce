@@ -1,6 +1,3 @@
- TSX
-Copy
-
 "use client"
  
 import { useState, useEffect } from "react"
